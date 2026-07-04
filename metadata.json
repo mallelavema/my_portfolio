@@ -1,0 +1,6 @@
+{
+  "name": "Vema Mallela Portfolio",
+  "description": "Premium cinematic portfolio website for Vema Mallela, Data Scientist and AI/ML Engineer, featuring interactive 3D elements, dynamic project displays, and responsive design.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
