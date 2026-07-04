@@ -10,26 +10,26 @@ export default function Skills() {
   const getCategoryIcon = (title: string) => {
     switch (title) {
       case 'Generative AI & LLMs':
-        return <Sparkles className="w-5 h-5 text-purple-400" />;
+        return <Sparkles className="w-5 h-5 text-pink-400" />;
       case 'Machine Learning & AI':
-        return <Cpu className="w-5 h-5 text-indigo-400" />;
+        return <Cpu className="w-5 h-5 text-purple-400" />;
       case 'Data Visualization & BI':
-        return <Eye className="w-5 h-5 text-cyan-400" />;
+        return <Eye className="w-5 h-5 text-rose-400" />;
       default:
-        return <Database className="w-5 h-5 text-indigo-300" />;
+        return <Database className="w-5 h-5 text-purple-300" />;
     }
   };
 
   const getCategoryTheme = (title: string) => {
     switch (title) {
       case 'Generative AI & LLMs':
-        return 'from-purple-500/10 to-indigo-500/5 hover:border-purple-500/30 glow-purple';
+        return 'from-pink-500/10 to-purple-500/5 hover:border-pink-500/30 glow-pink';
       case 'Machine Learning & AI':
-        return 'from-indigo-500/10 to-blue-500/5 hover:border-indigo-500/30 glow-indigo';
+        return 'from-purple-500/10 to-pink-500/5 hover:border-purple-500/30 glow-purple';
       case 'Data Visualization & BI':
-        return 'from-cyan-500/10 to-blue-500/5 hover:border-cyan-500/30 glow-cyan';
+        return 'from-rose-500/10 to-purple-500/5 hover:border-rose-500/30 glow-rose';
       default:
-        return 'from-indigo-500/10 to-cyan-500/5 hover:border-indigo-500/30 glow-combined';
+        return 'from-purple-500/10 to-pink-500/5 hover:border-purple-500/30 glow-combined';
     }
   };
 
@@ -42,15 +42,15 @@ export default function Skills() {
   return (
     <section id="skills" className="relative py-24 border-t border-white/[0.04] overflow-hidden">
       {/* Background radial highlight */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full bg-indigo-500/5 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full bg-purple-500/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
         {/* Section Header */}
         <div className="mb-16 md:flex items-end justify-between">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="h-[1px] w-8 bg-cyan-400"></span>
-              <span className="font-mono text-xs text-cyan-400 uppercase tracking-widest">Capabilities</span>
+              <span className="h-[1px] w-8 bg-pink-400"></span>
+              <span className="font-mono text-xs text-pink-400 uppercase tracking-widest">Capabilities</span>
             </div>
             <h2 className="font-sans font-black tracking-tight text-white text-3xl sm:text-4xl">
               Technical Arsenal
@@ -98,7 +98,7 @@ export default function Skills() {
                       <span className="text-[#9A9AA5] group-hover:text-white transition-colors duration-200">
                         {skill.name}
                       </span>
-                      <span className="font-mono text-xs text-cyan-400 font-medium">
+                      <span className="font-mono text-xs text-pink-400 font-medium">
                         {skill.level}%
                       </span>
                     </div>
@@ -107,10 +107,10 @@ export default function Skills() {
                       <div
                         className={`h-full rounded-full transition-all duration-1000 ease-out bg-gradient-to-r ${
                           category.title === 'Generative AI & LLMs'
-                            ? 'from-purple-500 to-indigo-400'
+                            ? 'from-pink-500 to-purple-400'
                             : category.title === 'Machine Learning & AI'
-                            ? 'from-indigo-500 to-blue-400'
-                            : 'from-cyan-400 to-blue-500'
+                            ? 'from-purple-500 to-pink-400'
+                            : 'from-rose-400 to-purple-500'
                         }`}
                         style={{
                           width: `${skill.level}%`,
@@ -126,12 +126,12 @@ export default function Skills() {
         </div>
 
         {/* Global Stack Marquee / Keyword Badges Grid */}
-        <div className="p-6 sm:p-8 rounded-2xl bg-[#0F0F12]/80 border border-white/[0.05] backdrop-blur-md relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-indigo-500/[0.02] to-transparent pointer-events-none" />
+        <div className="p-6 sm:p-8 rounded-2xl bg-[#130E26]/40 border border-white/[0.05] backdrop-blur-md relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500/[0.02] to-transparent pointer-events-none" />
           
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6">
             <div className="flex items-center gap-2.5">
-              <Terminal className="w-4 h-4 text-cyan-400" />
+              <Terminal className="w-4 h-4 text-pink-400" />
               <h4 className="font-sans font-bold text-sm text-white uppercase tracking-wider">
                 Full-Stack Data Tech Ecosystem
               </h4>
@@ -143,7 +143,7 @@ export default function Skills() {
             {allMainTools.map((tool) => (
               <span
                 key={tool}
-                className="px-3.5 py-2 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.05] hover:border-cyan-400/30 hover:text-cyan-400 hover:-translate-y-0.5 transition-all duration-200 cursor-default font-mono text-xs text-[#9A9AA5] inline-block shadow-sm"
+                className="px-3.5 py-2 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.05] hover:border-pink-500/30 hover:text-pink-400 hover:-translate-y-0.5 transition-all duration-200 cursor-default font-mono text-xs text-[#9A9AA5] inline-block shadow-sm"
               >
                 {tool}
               </span>

@@ -92,14 +92,14 @@ export default function Contact() {
   return (
     <section id="contact" className="relative py-24 border-t border-white/[0.04]">
       {/* Structural bottom bloom */}
-      <div className="absolute bottom-0 right-[20%] w-[40vw] h-[40vw] rounded-full bg-cyan-500/[0.03] blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 right-[20%] w-[40vw] h-[40vw] rounded-full bg-pink-500/[0.03] blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
         {/* Section Header */}
         <div className="mb-16">
           <div className="flex items-center gap-2 mb-2">
-            <span className="h-[1px] w-8 bg-cyan-400"></span>
-            <span className="font-mono text-xs text-cyan-400 uppercase tracking-widest">Inquire</span>
+            <span className="h-[1px] w-8 bg-pink-400"></span>
+            <span className="font-mono text-xs text-pink-400 uppercase tracking-widest">Inquire</span>
           </div>
           <h2 className="font-sans font-black tracking-tight text-white text-3xl sm:text-4xl">
             Initiate Connection
@@ -112,7 +112,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
           {/* Quick Contact Credentials Panel */}
           <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.05] backdrop-blur-md hover:border-white/[0.12] transition-colors duration-300 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.01] to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.01] to-transparent pointer-events-none" />
 
             <div className="relative z-10">
               <h3 className="font-sans font-black text-2xl text-white tracking-tight mb-4">
@@ -125,7 +125,7 @@ export default function Contact() {
               {/* Actionable items */}
               <div className="space-y-6">
                 <div className="flex items-center gap-4 group">
-                  <div className="w-11 h-11 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0">
+                  <div className="w-11 h-11 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div className="text-left flex-1 min-w-0">
@@ -145,7 +145,7 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="w-11 h-11 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0">
+                  <div className="w-11 h-11 rounded-xl bg-pink-500/10 border border-pink-500/20 text-pink-400 flex items-center justify-center shrink-0">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div className="text-left">
@@ -255,7 +255,7 @@ export default function Contact() {
                         onChange={handleInputChange}
                         placeholder="Your Name"
                         required
-                        className="w-full px-4 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-white placeholder-white/20 text-sm focus:bg-white/[0.04] focus:border-cyan-400/50 outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-white placeholder-white/20 text-sm focus:bg-white/[0.04] focus:border-pink-500/50 outline-none transition-all"
                         disabled={sendingState === 'sending'}
                       />
                     </div>
@@ -272,7 +272,7 @@ export default function Contact() {
                         onChange={handleInputChange}
                         placeholder="you@domain.com"
                         required
-                        className="w-full px-4 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-white placeholder-white/20 text-sm focus:bg-white/[0.04] focus:border-cyan-400/50 outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-white placeholder-white/20 text-sm focus:bg-white/[0.04] focus:border-pink-500/50 outline-none transition-all"
                         disabled={sendingState === 'sending'}
                       />
                     </div>
@@ -290,7 +290,7 @@ export default function Contact() {
                       value={formState.subject}
                       onChange={handleInputChange}
                       placeholder="e.g. Collaboration Opportunity / Dashboard Project"
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-white placeholder-white/20 text-sm focus:bg-white/[0.04] focus:border-cyan-400/50 outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-white placeholder-white/20 text-sm focus:bg-white/[0.04] focus:border-pink-500/50 outline-none transition-all"
                       disabled={sendingState === 'sending'}
                     />
                   </div>
@@ -308,7 +308,7 @@ export default function Contact() {
                       onChange={handleInputChange}
                       placeholder="Please details your project inquiry, database scope, or career offer details..."
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-white placeholder-white/20 text-sm focus:bg-white/[0.04] focus:border-cyan-400/50 outline-none resize-none transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] text-white placeholder-white/20 text-sm focus:bg-white/[0.04] focus:border-pink-500/50 outline-none resize-none transition-all"
                       disabled={sendingState === 'sending'}
                     />
                   </div>
@@ -329,7 +329,7 @@ export default function Contact() {
                     <button
                       type="submit"
                       disabled={sendingState === 'sending'}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-medium text-sm disabled:opacity-50 hover:scale-[1.01] hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-200 cursor-pointer"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400 text-white font-medium text-sm disabled:opacity-50 hover:scale-[1.01] hover:shadow-lg hover:shadow-pink-500/10 transition-all duration-200 cursor-pointer"
                       id="btn-submit-contact"
                     >
                       {sendingState === 'sending' ? (
@@ -352,7 +352,7 @@ export default function Contact() {
             {/* Interactive Local Storage sent-log analyzer */}
             {submissionHistory.length > 0 && (
               <div className="mt-8 pt-6 border-t border-white/[0.05] text-left">
-                <span className="font-mono text-[9px] text-cyan-400 uppercase tracking-widest block mb-3 font-semibold">
+                <span className="font-mono text-[9px] text-pink-400 uppercase tracking-widest block mb-3 font-semibold">
                   Local Message Logs (Recent Transmissions)
                 </span>
                 <div className="space-y-2 max-h-24 overflow-y-auto pr-1">

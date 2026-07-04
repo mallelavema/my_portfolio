@@ -54,16 +54,16 @@ export default function Navbar({ onOpenAIChat, onOpenPrintCV }: NavbarProps) {
             className="flex items-center gap-2 group cursor-pointer"
             id="nav-logo"
           >
-            <div className="relative w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-cyan-400 p-[1px] flex items-center justify-center overflow-hidden">
+            <div className="relative w-8 h-8 rounded-lg bg-gradient-to-tr from-[#D946EF] to-[#8B5CF6] p-[1px] flex items-center justify-center overflow-hidden">
               <div className="absolute inset-0 bg-black rounded-[7px] group-hover:bg-transparent transition-colors duration-300" />
-              <Terminal className="w-4 h-4 text-cyan-400 group-hover:text-black transition-colors duration-300 relative z-10" />
+              <Terminal className="w-4 h-4 text-pink-400 group-hover:text-black transition-colors duration-300 relative z-10" />
             </div>
             <div className="flex flex-col">
-              <span className="font-sans font-bold tracking-tight text-white group-hover:text-cyan-400 transition-colors duration-300 text-base leading-none">
-                {personalInfo.name}
+              <span className="font-sans font-bold tracking-tight text-white group-hover:text-pink-400 transition-colors duration-300 text-base leading-none">
+                VEMA<span className="text-pink-400 font-mono">.DS</span>
               </span>
               <span className="font-mono text-[9px] text-[#9A9AA5] tracking-widest mt-0.5 uppercase">
-                Data & AI/ML
+                Data Science & AI
               </span>
             </div>
           </a>
@@ -79,7 +79,7 @@ export default function Navbar({ onOpenAIChat, onOpenPrintCV }: NavbarProps) {
                     className="relative text-sm text-[#9A9AA5] hover:text-white transition-colors duration-300 font-medium py-1 group"
                   >
                     {link.name}
-                    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-cyan-400 group-hover:w-full transition-all duration-300 rounded" />
+                    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-pink-400 group-hover:w-full transition-all duration-300 rounded" />
                   </a>
                 </li>
               ))}
@@ -91,7 +91,7 @@ export default function Navbar({ onOpenAIChat, onOpenPrintCV }: NavbarProps) {
             <div className="flex items-center gap-3">
               <button
                 onClick={onOpenAIChat}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 hover:text-indigo-200 border border-indigo-500/30 text-xs font-mono transition-all duration-300"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-pink-500/10 hover:bg-pink-500/20 text-pink-300 hover:text-pink-200 border border-pink-500/30 text-xs font-mono transition-all duration-300"
                 id="btn-ai-chat"
               >
                 <Sparkles className="w-3.5 h-3.5 animate-pulse" />
@@ -100,7 +100,7 @@ export default function Navbar({ onOpenAIChat, onOpenPrintCV }: NavbarProps) {
               
               <button
                 onClick={onOpenPrintCV}
-                className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-medium text-xs hover:from-indigo-500 hover:to-cyan-400 shadow-md shadow-indigo-600/15 hover:shadow-cyan-500/20 hover:scale-[1.03] transition-all duration-200"
+                className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-white font-medium text-xs hover:from-purple-500 hover:to-pink-400 shadow-md shadow-purple-600/15 hover:shadow-pink-500/20 hover:scale-[1.03] transition-all duration-200"
                 id="btn-download-resume"
               >
                 <FileDown className="w-3.5 h-3.5" />
@@ -138,7 +138,7 @@ export default function Navbar({ onOpenAIChat, onOpenPrintCV }: NavbarProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-[57px] z-40 md:hidden bg-[#0A0A0B]/95 backdrop-blur-lg border-b border-white/[0.08] shadow-2xl p-5"
+            className="fixed inset-x-0 top-[57px] z-40 md:hidden bg-[#080412]/95 backdrop-blur-lg border-b border-white/[0.08] shadow-2xl p-5"
           >
             <nav className="flex flex-col gap-4">
               <ul className="flex flex-col gap-3">
@@ -161,7 +161,7 @@ export default function Navbar({ onOpenAIChat, onOpenPrintCV }: NavbarProps) {
                     setMobileMenuOpen(false);
                     onOpenAIChat();
                   }}
-                  className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 font-mono text-xs transition-colors"
+                  className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-pink-500/10 border border-pink-500/20 text-pink-300 font-mono text-xs transition-colors"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>Resume Bot</span>
@@ -171,7 +171,7 @@ export default function Navbar({ onOpenAIChat, onOpenPrintCV }: NavbarProps) {
                     setMobileMenuOpen(false);
                     onOpenPrintCV();
                   }}
-                  className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-medium text-xs transition-colors"
+                  className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-500 text-white font-medium text-xs transition-colors"
                 >
                   <FileDown className="w-3.5 h-3.5" />
                   <span>Get Resume</span>

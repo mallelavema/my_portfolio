@@ -216,7 +216,7 @@ export default function Scene3D() {
         });
       });
 
-      // Draw Connection Lines (Plexus/Network bonds)
+      // Draw Connection Lines (Plexus/Network bonds with reference theme colors)
       const maxDistance = isMobile ? 65 : 85;
       ctx.lineWidth = 0.6;
 
@@ -235,13 +235,23 @@ export default function Scene3D() {
             // Compute connection alpha based on proximity and Z-depth
             const proximityAlpha = 1 - (dist / maxDistance);
             const zAlpha = (distance - p1.sz) / (distance * 1.5); // fade points in background
-            const alpha = proximityAlpha * zAlpha * 0.32;
+            const alpha = proximityAlpha * zAlpha * 0.28;
 
             if (alpha > 0) {
-              // Interpolate neon gradient colors: Indigo (#6C5CE7) to Cyan (#00E5FF)
+              // Interpolate warm magenta/violet/peach/cyan gradient colors to match the reference
               const gradient = ctx.createLinearGradient(p1.sx, p1.sy, p2.sx, p2.sy);
-              gradient.addColorStop(0, `rgba(108, 92, 231, ${alpha * 1.2})`); // Electric Indigo
-              gradient.addColorStop(1, `rgba(0, 229, 255, ${alpha * 1.2})`);  // Muted Cyan/Teal
+              
+              // Assign gradients based on point IDs
+              if (p1.id % 3 === 0) {
+                gradient.addColorStop(0, `rgba(236, 72, 153, ${alpha * 1.2})`); // Magenta/Pink
+                gradient.addColorStop(1, `rgba(139, 92, 246, ${alpha * 0.8})`); // Violet
+              } else if (p1.id % 3 === 1) {
+                gradient.addColorStop(0, `rgba(139, 92, 246, ${alpha * 1.2})`); // Violet
+                gradient.addColorStop(1, `rgba(253, 186, 116, ${alpha * 0.8})`); // Peach/Orange
+              } else {
+                gradient.addColorStop(0, `rgba(6, 182, 212, ${alpha * 1.0})`);  // Cyan
+                gradient.addColorStop(1, `rgba(236, 72, 153, ${alpha * 0.8})`); // Pink
+              }
 
               ctx.strokeStyle = gradient;
               ctx.beginPath();
@@ -253,61 +263,98 @@ export default function Scene3D() {
         }
       }
 
-      // Draw Nodes (Vertex Points)
+      // Draw Nodes (Vertex Points with multi-layered concentric halos to match reference screenshot)
       projected.forEach((p) => {
         // Calculate point size and alpha based on depth (Z axis)
-        // rotY.z range is roughly [-radius, radius]
         const depthRatio = (distance - p.sz) / (distance * 1.5);
-        const size = Math.max(1, (2.5 * depthRatio) * targetScale);
-        const alpha = Math.max(0.1, depthRatio * 0.95);
+        const size = Math.max(1.2, (2.8 * depthRatio) * targetScale);
+        const alpha = Math.max(0.15, depthRatio * 0.95);
 
         // Core points use primary neon styling
         ctx.beginPath();
         ctx.arc(p.sx, p.sy, size, 0, Math.PI * 2);
 
-        // Alternate colors for standard visual rhythm (e.g. some indigo, some cyan, some silver)
-        if (p.id % 3 === 0) {
-          ctx.fillStyle = `rgba(0, 229, 255, ${alpha})`; // Cyan
-        } else if (p.id % 3 === 1) {
-          ctx.fillStyle = `rgba(108, 92, 231, ${alpha})`; // Indigo
+        // Colors matching the reference screenshot: peach/orange, magenta/pink, violet/indigo, soft teal
+        let colorString = `rgba(167, 139, 250, ${alpha})`; // Lavender default
+        let glowColor = `rgba(167, 139, 250, ${alpha * 0.25})`;
+
+        if (p.id % 4 === 0) {
+          colorString = `rgba(236, 72, 153, ${alpha})`; // Bright Pink / Magenta
+          glowColor = `rgba(236, 72, 153, 0.3)`;
+        } else if (p.id % 4 === 1) {
+          colorString = `rgba(253, 186, 116, ${alpha})`; // Warm Peach / Orange
+          glowColor = `rgba(253, 186, 116, 0.35)`;
+        } else if (p.id % 4 === 2) {
+          colorString = `rgba(139, 92, 246, ${alpha})`; // Deep Violet
+          glowColor = `rgba(139, 92, 246, 0.35)`;
         } else {
-          ctx.fillStyle = `rgba(245, 245, 247, ${alpha})`; // Metallic Off-white
+          colorString = `rgba(6, 182, 212, ${alpha})`; // Soft Cyan / Teal
+          glowColor = `rgba(6, 182, 212, 0.3)`;
         }
+
+        ctx.fillStyle = colorString;
         ctx.fill();
 
-        // High-fidelity touch: Add subtle ambient glow on closer points
-        if (p.sz < -60 && p.id % 5 === 0) {
+        // High-fidelity touch: Add multiple concentric glowing halos for key nodes (matches reference layout)
+        if (p.id % 6 === 0 && p.sz < 0) {
+          // Inner halo ring
+          ctx.strokeStyle = glowColor;
+          ctx.lineWidth = 1;
           ctx.beginPath();
-          ctx.arc(p.sx, p.sy, size * 3, 0, Math.PI * 2);
-          ctx.fillStyle = p.id % 3 === 0 ? `rgba(0, 229, 255, ${alpha * 0.25})` : `rgba(108, 92, 231, ${alpha * 0.25})`;
-          ctx.fill();
+          ctx.arc(p.sx, p.sy, size * 2.8, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Outer halo ring (fainter, larger)
+          ctx.strokeStyle = glowColor.replace('0.3', '0.08').replace('0.35', '0.08');
+          ctx.beginPath();
+          ctx.arc(p.sx, p.sy, size * 5.5, 0, Math.PI * 2);
+          ctx.stroke();
         }
       });
 
       // Draw subtle orbital rings for futuristic "satellite" aesthetic
-      ctx.strokeStyle = 'rgba(108, 92, 231, 0.05)';
-      ctx.lineWidth = 1;
+      // Let's draw 3 beautiful tilted orbits with dashes and solid lines matching the reference screenshot
+      ctx.lineWidth = 0.75;
+
+      // Orbit 1: Tilted dotted/dashed ellipse
+      ctx.strokeStyle = 'rgba(236, 72, 153, 0.08)'; // Magenta orbit
+      ctx.setLineDash([2, 5]);
       ctx.beginPath();
-      ctx.ellipse(targetCenterX, targetCenterY, 200 * targetScale, 60 * targetScale, Math.PI / 6 + angleY * 0.1, 0, Math.PI * 2);
+      ctx.ellipse(targetCenterX, targetCenterY, 210 * targetScale, 70 * targetScale, Math.PI / 10 + angleY * 0.05, 0, Math.PI * 2);
       ctx.stroke();
 
-      ctx.strokeStyle = 'rgba(0, 229, 255, 0.04)';
+      // Orbit 2: Tilted dotted/dashed ellipse (opposite angle)
+      ctx.strokeStyle = 'rgba(139, 92, 246, 0.09)'; // Violet orbit
+      ctx.setLineDash([3, 7]);
       ctx.beginPath();
-      ctx.ellipse(targetCenterX, targetCenterY, 250 * targetScale, 80 * targetScale, -Math.PI / 4 - angleY * 0.15, 0, Math.PI * 2);
+      ctx.ellipse(targetCenterX, targetCenterY, 280 * targetScale, 90 * targetScale, -Math.PI / 6 - angleY * 0.08, 0, Math.PI * 2);
       ctx.stroke();
 
-      // Floating particles background (deep field bokeh)
-      // Standard static particles rendered within the canvas frame
+      // Orbit 3: Solid very fine outer orbit
+      ctx.strokeStyle = 'rgba(6, 182, 212, 0.06)'; // Cyan outer orbit
+      ctx.setLineDash([]); // Reset line dash for solid line
+      ctx.beginPath();
+      ctx.ellipse(targetCenterX, targetCenterY, 340 * targetScale, 110 * targetScale, Math.PI / 4 + angleY * 0.03, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Floating particles background (deep field bokeh with warm theme colors)
       for (let i = 0; i < 15; i++) {
-        const ptTime = pulseTime * 0.2 + i;
-        const px = (Math.sin(ptTime) * 0.4 + 0.5) * width;
-        const py = (Math.cos(ptTime * 1.5) * 0.4 + 0.5) * height;
-        const pSize = (Math.sin(ptTime * 2) * 1.5 + 2);
-        const pAlpha = (Math.cos(ptTime) * 0.15 + 0.15);
+        const ptTime = pulseTime * 0.15 + i;
+        const px = (Math.sin(ptTime) * 0.45 + 0.5) * width;
+        const py = (Math.cos(ptTime * 1.3) * 0.45 + 0.5) * height;
+        const pSize = (Math.sin(ptTime * 2) * 1.2 + 2);
+        const pAlpha = (Math.cos(ptTime) * 0.12 + 0.12);
 
         ctx.beginPath();
         ctx.arc(px, py, pSize, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(108, 92, 231, ${pAlpha})`;
+        
+        if (i % 3 === 0) {
+          ctx.fillStyle = `rgba(236, 72, 153, ${pAlpha})`; // Pink
+        } else if (i % 3 === 1) {
+          ctx.fillStyle = `rgba(253, 186, 116, ${pAlpha})`; // Peach
+        } else {
+          ctx.fillStyle = `rgba(139, 92, 246, ${pAlpha})`; // Violet
+        }
         ctx.fill();
       }
 
@@ -328,11 +375,12 @@ export default function Scene3D() {
         id="bg-neural-canvas"
         ref={canvasRef}
         className="w-full h-full block"
-        style={{ opacity: 0.85 }}
+        style={{ opacity: 0.9 }}
       />
-      {/* Background Soft Light Bloom Gradients */}
-      <div className="absolute top-[20%] right-[10%] w-[35vw] h-[35vw] rounded-full bg-indigo-600/10 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[20%] left-[5%] w-[40vw] h-[40vw] rounded-full bg-cyan-500/5 blur-[150px] pointer-events-none" />
+      {/* Background Soft Light Bloom Gradients in warm colors representing the reference */}
+      <div className="absolute top-[10%] left-[-10%] w-[45vw] h-[45vw] rounded-full bg-violet-900/15 blur-[130px] pointer-events-none" />
+      <div className="absolute top-[15%] right-[-15%] w-[45vw] h-[45vw] rounded-full bg-pink-900/12 blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-[10%] left-[10%] w-[35vw] h-[35vw] rounded-full bg-cyan-950/15 blur-[120px] pointer-events-none" />
     </div>
   );
 }

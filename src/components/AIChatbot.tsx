@@ -210,12 +210,12 @@ Could you ask about:
             {/* Header */}
             <div className="p-4 border-b border-white/[0.06] flex items-center justify-between bg-white/[0.01]">
               <div className="flex items-center gap-2.5 text-left">
-                <div className="w-9 h-9 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 flex items-center justify-center">
+                <div className="w-9 h-9 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-300 flex items-center justify-center">
                   <Cpu className="w-4.5 h-4.5 animate-pulse" />
                 </div>
                 <div>
                   <h3 className="font-sans font-bold text-sm text-white leading-tight">Vema's Resume Bot</h3>
-                  <span className="font-mono text-[9px] text-cyan-400 font-semibold tracking-wider uppercase block">Gemini 1.5 Flash Model</span>
+                  <span className="font-mono text-[9px] text-pink-400 font-semibold tracking-wider uppercase block">Gemini 1.5 Flash Model</span>
                 </div>
               </div>
 
@@ -244,7 +244,7 @@ Could you ask about:
                   <div
                     className={`px-3.5 py-2.5 rounded-2xl max-w-[85%] text-sm leading-relaxed whitespace-pre-wrap text-left ${
                       msg.sender === 'user'
-                        ? 'bg-gradient-to-r from-indigo-600 to-indigo-500 text-white rounded-tr-none shadow-md shadow-indigo-600/10'
+                        ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-tr-none shadow-md shadow-purple-600/10'
                         : 'bg-white/[0.03] border border-white/[0.06] text-[#D1D1D6] rounded-tl-none'
                     }`}
                   >
@@ -257,9 +257,9 @@ Could you ask about:
                 <div className="flex flex-col items-start">
                   <div className="font-mono text-[8px] text-[#55555C] mb-1">AI_AGENT • CALCULATING...</div>
                   <div className="px-4 py-3 rounded-2xl bg-white/[0.03] border border-white/[0.06] rounded-tl-none flex gap-1 items-center justify-center">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce" style={{ animationDelay: '300ms' }} />
+                    <span className="w-1.5 h-1.5 rounded-full bg-pink-400 animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="w-1.5 h-1.5 rounded-full bg-pink-400 animate-bounce" style={{ animationDelay: '300ms' }} />
                   </div>
                 </div>
               )}
@@ -271,11 +271,11 @@ Could you ask about:
               {/* Telemetry diagnostics stats */}
               <div className="flex justify-between items-center text-[9px] font-mono border-b border-white/[0.04] pb-2 text-[#55555C]">
                 <div className="flex items-center gap-1">
-                  <Terminal className="w-3.5 h-3.5 text-cyan-500 shrink-0" />
+                  <Terminal className="w-3.5 h-3.5 text-pink-500 shrink-0" />
                   <span>ENGINE: <span className="text-white">{aiEngine}</span></span>
                 </div>
                 {latencyMs !== null && (
-                  <span>LATENCY: <span className="text-cyan-400">{latencyMs}ms</span></span>
+                  <span>LATENCY: <span className="text-pink-400">{latencyMs}ms</span></span>
                 )}
               </div>
 
@@ -285,7 +285,7 @@ Could you ask about:
                   <button
                     key={q}
                     onClick={() => handleSendMessage(q)}
-                    className="px-2.5 py-1.5 rounded-lg bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.05] hover:border-indigo-400/30 text-[10px] font-sans text-[#9A9AA5] hover:text-white text-left transition-all shrink-0"
+                    className="px-2.5 py-1.5 rounded-lg bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.05] hover:border-pink-400/30 text-[10px] font-sans text-[#9A9AA5] hover:text-white text-left transition-all shrink-0"
                   >
                     {q}
                   </button>
@@ -305,13 +305,13 @@ Could you ask about:
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   placeholder="Ask about Vema's ML skills / SQL experience..."
-                  className="flex-1 px-4 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white placeholder-white/20 text-xs focus:bg-white/[0.05] focus:border-cyan-400/50 outline-none transition-all"
+                  className="flex-1 px-4 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white placeholder-white/20 text-xs focus:bg-white/[0.05] focus:border-pink-500/50 outline-none transition-all"
                   disabled={isTyping}
                 />
                 <button
                   type="submit"
                   disabled={isTyping || !inputMessage.trim()}
-                  className="p-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 text-white transition-all shrink-0 cursor-pointer"
+                  className="p-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:opacity-40 text-white transition-all shrink-0 cursor-pointer"
                   title="Send Message"
                 >
                   <Send className="w-4 h-4" />

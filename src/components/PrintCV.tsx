@@ -62,7 +62,7 @@ ${projectsText}
         {/* Top Control Bar (Hidden on print) */}
         <div className="p-4 bg-neutral-900 border-b border-neutral-800 flex items-center justify-between text-white shrink-0 print:hidden">
           <div className="flex items-center gap-2">
-            <FileText className="w-4 h-4 text-cyan-400" />
+            <FileText className="w-4 h-4 text-pink-400" />
             <span className="font-sans font-bold text-sm">Printable Interactive CV</span>
           </div>
 
@@ -88,7 +88,7 @@ ${projectsText}
 
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 font-bold text-xs shadow-md"
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400 font-bold text-xs shadow-md"
               id="btn-print-cv"
             >
               <Printer className="w-3.5 h-3.5" />

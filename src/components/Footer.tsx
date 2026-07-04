@@ -18,9 +18,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
         {/* Brand logo repetition */}
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-md bg-gradient-to-br from-indigo-500 to-cyan-500 p-[1px] flex items-center justify-center">
+          <div className="w-6 h-6 rounded-md bg-gradient-to-br from-purple-500 to-pink-500 p-[1px] flex items-center justify-center">
             <div className="w-full h-full bg-black rounded-[5px] flex items-center justify-center">
-              <Terminal className="w-3 h-3 text-cyan-400" />
+              <Terminal className="w-3 h-3 text-pink-400" />
             </div>
           </div>
           <span className="font-sans font-bold text-sm text-white tracking-tight">
@@ -30,11 +30,11 @@ export default function Footer() {
 
         {/* Footer Nav Links */}
         <div className="flex flex-wrap justify-center gap-6 text-xs text-[#9A9AA5] font-mono">
-          <a href="#about" onClick={(e) => handleLinkClick(e, '#about')} className="hover:text-cyan-400 transition-colors">About</a>
-          <a href="#skills" onClick={(e) => handleLinkClick(e, '#skills')} className="hover:text-cyan-400 transition-colors">Skills</a>
-          <a href="#projects" onClick={(e) => handleLinkClick(e, '#projects')} className="hover:text-cyan-400 transition-colors">Work</a>
-          <a href="#timeline" onClick={(e) => handleLinkClick(e, '#timeline')} className="hover:text-cyan-400 transition-colors">Timeline</a>
-          <a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')} className="hover:text-cyan-400 transition-colors">Contact</a>
+          <a href="#about" onClick={(e) => handleLinkClick(e, '#about')} className="hover:text-pink-400 transition-colors">About</a>
+          <a href="#skills" onClick={(e) => handleLinkClick(e, '#skills')} className="hover:text-pink-400 transition-colors">Skills</a>
+          <a href="#projects" onClick={(e) => handleLinkClick(e, '#projects')} className="hover:text-pink-400 transition-colors">Work</a>
+          <a href="#timeline" onClick={(e) => handleLinkClick(e, '#timeline')} className="hover:text-pink-400 transition-colors">Timeline</a>
+          <a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')} className="hover:text-pink-400 transition-colors">Contact</a>
         </div>
 
         {/* Copyright */}

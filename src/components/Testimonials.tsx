@@ -26,8 +26,8 @@ export default function Testimonials() {
       <div className="max-w-4xl mx-auto px-5 sm:px-8 relative z-10 text-center">
         {/* Section badge */}
         <div className="flex items-center justify-center gap-2 mb-4">
-          <MessageSquare className="w-4 h-4 text-cyan-400" />
-          <span className="font-mono text-xs text-cyan-400 uppercase tracking-widest font-semibold">
+          <MessageSquare className="w-4 h-4 text-pink-400" />
+          <span className="font-mono text-xs text-pink-400 uppercase tracking-widest font-semibold">
             Endorsements
           </span>
         </div>
@@ -43,7 +43,7 @@ export default function Testimonials() {
               transition={{ duration: 0.4 }}
               className="absolute inset-0 flex flex-col items-center justify-center"
             >
-              <Quote className="w-10 h-10 text-indigo-500/15 mb-4" />
+              <Quote className="w-10 h-10 text-purple-500/15 mb-4" />
               <p className="font-sans text-sm sm:text-base text-[#9A9AA5] italic leading-relaxed max-w-2xl">
                 "{testimonialsData[activeIndex].feedback}"
               </p>
@@ -51,7 +51,7 @@ export default function Testimonials() {
                 <span className="font-sans font-bold text-white text-sm block">
                   {testimonialsData[activeIndex].name}
                 </span>
-                <span className="font-mono text-[10px] text-cyan-400 tracking-wider block mt-0.5">
+                <span className="font-mono text-[10px] text-pink-400 tracking-wider block mt-0.5">
                   {testimonialsData[activeIndex].role}
                 </span>
               </div>
@@ -77,7 +77,7 @@ export default function Testimonials() {
                 key={idx}
                 onClick={() => setActiveIndex(idx)}
                 className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                  idx === activeIndex ? 'bg-cyan-400 w-3' : 'bg-white/10'
+                  idx === activeIndex ? 'bg-pink-400 w-3' : 'bg-white/10'
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
