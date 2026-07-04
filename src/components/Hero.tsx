@@ -4,11 +4,10 @@ import { motion } from 'motion/react';
 import { personalInfo } from '../data';
 
 interface HeroProps {
-  onOpenAIChat: () => void;
   onOpenPrintCV: () => void;
 }
 
-export default function Hero({ onOpenAIChat, onOpenPrintCV }: HeroProps) {
+export default function Hero({ onOpenPrintCV }: HeroProps) {
   const scrollToProjects = (e: React.MouseEvent) => {
     e.preventDefault();
     const target = document.querySelector('#projects');

@@ -9,11 +9,9 @@ import Timeline from './components/Timeline';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import AIChatbot from './components/AIChatbot';
 import PrintCV from './components/PrintCV';
 
 export default function App() {
-  const [isAIChatOpen, setIsAIChatOpen] = useState(false);
   const [isPrintCVOpen, setIsPrintCVOpen] = useState(false);
 
   return (
@@ -36,16 +34,10 @@ export default function App() {
       {/* Front Content Layer */}
       <div className="relative z-10 w-full flex flex-col">
         {/* Sticky Header Navbar */}
-        <Navbar 
-          onOpenAIChat={() => setIsAIChatOpen(true)} 
-          onOpenPrintCV={() => setIsPrintCVOpen(true)} 
-        />
+        <Navbar onOpenPrintCV={() => setIsPrintCVOpen(true)} />
 
         {/* Hero Landing Page Section */}
-        <Hero 
-          onOpenAIChat={() => setIsAIChatOpen(true)} 
-          onOpenPrintCV={() => setIsPrintCVOpen(true)} 
-        />
+        <Hero onOpenPrintCV={() => setIsPrintCVOpen(true)} />
 
         {/* About Section & Counter Statistics */}
         <About />
@@ -68,12 +60,6 @@ export default function App() {
         {/* Minimal Site Footer */}
         <Footer />
       </div>
-
-      {/* Slide-out AI Assistant Chatbot Panel */}
-      <AIChatbot 
-        isOpen={isAIChatOpen} 
-        onClose={() => setIsAIChatOpen(false)} 
-      />
 
       {/* Printable Interactive CV Document Modal */}
       <PrintCV 

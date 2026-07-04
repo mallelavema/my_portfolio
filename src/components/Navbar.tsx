@@ -4,11 +4,10 @@ import { motion, AnimatePresence } from 'motion/react';
 import { personalInfo } from '../data';
 
 interface NavbarProps {
-  onOpenAIChat: () => void;
   onOpenPrintCV: () => void;
 }
 
-export default function Navbar({ onOpenAIChat, onOpenPrintCV }: NavbarProps) {
+export default function Navbar({ onOpenPrintCV }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -87,17 +86,7 @@ export default function Navbar({ onOpenAIChat, onOpenPrintCV }: NavbarProps) {
 
             <div className="h-4 w-[1px] bg-white/10" />
 
-            {/* Resume and AI Agent buttons */}
             <div className="flex items-center gap-3">
-              <button
-                onClick={onOpenAIChat}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-pink-500/10 hover:bg-pink-500/20 text-pink-300 hover:text-pink-200 border border-pink-500/30 text-xs font-mono transition-all duration-300"
-                id="btn-ai-chat"
-              >
-                <Sparkles className="w-3.5 h-3.5 animate-pulse" />
-                <span>AI Assistant</span>
-              </button>
-              
               <button
                 onClick={onOpenPrintCV}
                 className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-white font-medium text-xs hover:from-purple-500 hover:to-pink-400 shadow-md shadow-purple-600/15 hover:shadow-pink-500/20 hover:scale-[1.03] transition-all duration-200"
@@ -111,13 +100,6 @@ export default function Navbar({ onOpenAIChat, onOpenPrintCV }: NavbarProps) {
 
           {/* Mobile menu trigger */}
           <div className="flex md:hidden items-center gap-2">
-            <button
-              onClick={onOpenAIChat}
-              className="p-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 hover:text-indigo-200 transition-colors"
-              title="AI Assistant"
-            >
-              <Sparkles className="w-4 h-4" />
-            </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 text-[#9A9AA5] hover:text-white transition-colors"
@@ -156,16 +138,6 @@ export default function Navbar({ onOpenAIChat, onOpenPrintCV }: NavbarProps) {
               </ul>
               <div className="h-[1px] bg-white/5 my-1" />
               <div className="grid grid-cols-2 gap-3">
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onOpenAIChat();
-                  }}
-                  className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-pink-500/10 border border-pink-500/20 text-pink-300 font-mono text-xs transition-colors"
-                >
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>Resume Bot</span>
-                </button>
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);

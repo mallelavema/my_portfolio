@@ -1,20 +1,42 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Vema Mallela Portfolio
 
-# Run and deploy your AI Studio app
+A modern personal portfolio website built with React, TypeScript, Vite, and Tailwind CSS.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/f0bd568a-e53f-40a5-aa0f-2d70a14ffc31
+- Responsive one-page portfolio experience
+- Smooth scrolling sections for About, Skills, Projects, Timeline, and Contact
+- Clean animated UI with a cinematic visual style
 
-## Run Locally
+## Run locally
 
-**Prerequisites:**  Node.js
+1. Install dependencies
+   ```bash
+   npm install
+   ```
+2. Start the development server
+   ```bash
+   npm run dev
+   ```
+3. Open the local URL shown in the terminal
 
+## Build for production
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm run build
+```
+
+## Deploy to GitHub Pages
+
+This project is configured for GitHub Pages deployment.
+
+1. Push the project to a GitHub repository.
+2. Open the repository settings and enable GitHub Pages.
+3. Choose the GitHub Actions deployment source.
+4. Push to the main branch to trigger the workflow.
+
+Your site will be published at:
+
+```text
+https://<your-username>.github.io/my_portfolio/
+```
