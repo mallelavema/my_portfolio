@@ -29,7 +29,7 @@ export default function About() {
                 <h3 className="font-sans font-bold text-lg text-white">Professional Trajectory</h3>
               </div>
               <p className="font-sans text-[#9A9AA5] text-base leading-relaxed mb-6">
-                I am a results-driven <strong className="text-white">Data Analyst and Data Scientist</strong> based in India, specializing in machine learning, statistical modeling, and full-scale business intelligence delivery. 
+                I am a results-driven <strong className="text-white">AI Engineer and Data Scientist</strong> based in India, specializing in machine learning, statistical modeling, and full-scale business intelligence delivery. 
               </p>
               <p className="font-sans text-[#9A9AA5] text-base leading-relaxed mb-6">
                 My technical core bridges exploratory analytics, predictive pipeline modeling, and cutting-edge <strong className="text-pink-300 font-medium">Generative AI (LLMs, RAG frameworks, and LangChain agents)</strong>. I thrive on translating abstract multi-dimensional data into intuitive, fast, and automated dashboard interfaces.
