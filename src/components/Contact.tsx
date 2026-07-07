@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, CheckCircle, Copy, AlertCircle, RefreshCw } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { personalInfo } from '../data';
+import { FORM_ENDPOINT } from '../config';
 
 interface SubmissionLog {
   name: string;
@@ -63,26 +64,60 @@ export default function Contact() {
       return;
     }
 
-    setSendingState('sending');
-
-    // Simulate sending packet over websocket/api
-    setTimeout(() => {
-      const newSubmission: SubmissionLog = {
-        ...formState,
-        timestamp: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-      };
-
-      const updatedHistory = [newSubmission, ...submissionHistory].slice(0, 5); // keep last 5
-      setSubmissionHistory(updatedHistory);
-      try {
-        localStorage.setItem('vema_portfolio_messages', JSON.stringify(updatedHistory));
-      } catch (err) {
-        console.error(err);
-      }
-
-      setSendingState('success');
-      setFormState({ name: '', email: '', subject: '', message: '' });
-    }, 1500);
+    // If a FORM_ENDPOINT is configured, POST to it (Formspree or similar). Otherwise fallback to localStorage.
+    if (FORM_ENDPOINT && FORM_ENDPOINT.trim().length > 0) {
+      setSendingState('sending');
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          subject: formState.subject,
+          message: formState.message
+        })
+      })
+        .then(async (res) => {
+          if (res.ok) {
+            // success
+            const newSubmission: SubmissionLog = {
+              ...formState,
+              timestamp: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            };
+            const updatedHistory = [newSubmission, ...submissionHistory].slice(0, 5);
+            setSubmissionHistory(updatedHistory);
+            try { localStorage.setItem('vema_portfolio_messages', JSON.stringify(updatedHistory)); } catch (err) { console.error(err); }
+            setSendingState('success');
+            setFormState({ name: '', email: '', subject: '', message: '' });
+          } else {
+            const data = await res.json().catch(() => ({}));
+            setValidationError(data.error || 'Submission failed. Please try again later.');
+            setSendingState('idle');
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+          setValidationError('Network error while sending message. Please try again later.');
+          setSendingState('idle');
+        });
+    } else {
+      // fallback: localStorage demo
+      setSendingState('sending');
+      setTimeout(() => {
+        const newSubmission: SubmissionLog = {
+          ...formState,
+          timestamp: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        };
+        const updatedHistory = [newSubmission, ...submissionHistory].slice(0, 5); // keep last 5
+        setSubmissionHistory(updatedHistory);
+        try { localStorage.setItem('vema_portfolio_messages', JSON.stringify(updatedHistory)); } catch (err) { console.error(err); }
+        setSendingState('success');
+        setFormState({ name: '', email: '', subject: '', message: '' });
+      }, 1500);
+    }
   };
 
   const clearFormSuccess = () => {
