@@ -59,7 +59,7 @@ export default function Navbar({ onOpenPrintCV }: NavbarProps) {
             </div>
             <div className="flex flex-col">
               <span className="font-sans font-bold tracking-tight text-white group-hover:text-pink-400 transition-colors duration-300 text-base leading-none">
-                VEMA<span className="text-pink-400 font-mono">.DS</span>
+                Vema Mallela
               </span>
               <span className="font-mono text-[9px] text-[#9A9AA5] tracking-widest mt-0.5 uppercase">
                 Data Science & AI

@@ -33,7 +33,7 @@ export default function Hero({ onOpenPrintCV }: HeroProps) {
             className="flex items-center gap-2 mb-3"
           >
             <span className="text-pink-400 font-mono text-[11px] sm:text-xs tracking-[0.3em] uppercase flex items-center gap-2 font-bold">
-              ✦ ✦ ASPIRING DATA SCIENTIST
+              ✦ ✦ ASPIRING DATA SCIENTIST & AI ENGINEER
             </span>
           </motion.div>
 
@@ -57,7 +57,7 @@ export default function Hero({ onOpenPrintCV }: HeroProps) {
             transition={{ duration: 0.8, delay: 0.45 }}
             className="font-sans text-[#9A9AA5] text-sm sm:text-base leading-relaxed max-w-xl mb-10 text-left mt-4"
           >
-            Passionate about turning raw data into meaningful insights. Skilled in Python, SQL, and machine learning — eager to build <strong className="text-white font-semibold">real-world data solutions</strong> and grow as a data professional.
+            Passionate about turning raw data into meaningful insights. Skilled in Python, SQL, machine learning, and Gen AI — eager to build <strong className="text-white font-semibold">real-world data solutions</strong> and grow as an AI Engineer.
           </motion.p>
 
           {/* Interactive Action Triggers matching reference theme */}
