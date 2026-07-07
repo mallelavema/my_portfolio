@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight, ChevronDown, Cpu, Database, Eye } from 'lucide-react';
 import { motion } from 'motion/react';
 import { personalInfo } from '../data';
+import profilePhoto from '../assets/profile-photo.png';
 
 interface HeroProps {
   onOpenPrintCV: () => void;
@@ -108,37 +109,25 @@ export default function Hero({ onOpenPrintCV }: HeroProps) {
           </motion.div>
         </div>
 
-        {/* Floating Abstract 3D Central Glass Visual & Floating HUD Stats (Frosted Glass Theme) */}
-        <div className="lg:col-span-5 hidden lg:flex items-center justify-center h-[500px] relative">
+        {/* Profile Photo Visual & Floating HUD Stats */}
+        <div className="lg:col-span-5 flex items-center justify-center h-[500px] relative">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="relative w-[380px] h-[380px]"
+            className="relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] lg:w-[380px] lg:h-[380px]"
           >
-            {/* Outer Glow */}
             <div className="absolute inset-0 bg-gradient-to-tr from-[#8B5CF6] to-[#EC4899] rounded-full blur-[40px] opacity-25"></div>
             
-            {/* The "3D" Glass sphere shell (layers directly on top of the 3D Canvas element) */}
             <div className="absolute inset-2 rounded-full bg-white/[0.03] backdrop-blur-[45px] border border-white/20 shadow-2xl flex items-center justify-center overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-[#8B5CF6]/15"></div>
-              {/* Inner Pulsing Core */}
-              <motion.div 
-                animate={{ 
-                  scale: [1, 1.08, 1],
-                  rotate: [0, 180, 360]
-                }}
-                transition={{ 
-                  repeat: Infinity, 
-                  duration: 10,
-                  ease: "linear"
-                }}
-                className="w-52 h-52 bg-gradient-to-tr from-[#8B5CF6]/30 to-[#EC4899]/20 rounded-[40%] filter blur-xl"
+              <img
+                src={profilePhoto}
+                alt="Vema"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute top-1/4 left-1/4 w-28 h-28 bg-white/5 rounded-full blur-md"></div>
             </div>
             
-            {/* Floating HUD Stat 1: Forecast Accuracy */}
             <motion.div 
               animate={{ y: [0, -8, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
@@ -148,7 +137,6 @@ export default function Hero({ onOpenPrintCV }: HeroProps) {
               <span className="text-2xl font-black text-pink-400 tracking-tight">~85%</span>
             </motion.div>
 
-            {/* Floating HUD Stat 2: Revenue Audited */}
             <motion.div 
               animate={{ y: [0, 8, 0] }}
               transition={{ repeat: Infinity, duration: 4, delay: 2, ease: "easeInOut" }}
@@ -158,7 +146,6 @@ export default function Hero({ onOpenPrintCV }: HeroProps) {
               <span className="text-2xl font-black text-purple-400 tracking-tight">$2.30M</span>
             </motion.div>
 
-            {/* Floating HUD Stat 3: Datasets */}
             <motion.div 
               animate={{ x: [0, -6, 0] }}
               transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
